@@ -7,8 +7,6 @@ class App extends Component {
   state = {
     contacts: [],
     filter: '',
-    name: '',
-    number: '',
   };
 
   formSubmitHandler = data => {
@@ -16,7 +14,6 @@ class App extends Component {
   };
 
   render() {
-    const { name, number } = this.state;
     return (
       <Box mx="auto" my={0} px="0" py={5} bg="container">
         <Section title="Phonebook">

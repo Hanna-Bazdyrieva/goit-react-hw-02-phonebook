@@ -6,14 +6,15 @@ import { nanoid } from 'nanoid';
 
 class ContactForm extends Component {
   static defaultProps = {
-    contacts: [],
-    filter: '',
+    // contacts: [],
+    // filter: '',
     name: '',
     number: '',
   };
-  // static propTypes = {
-  //   options: PropTypes.array.isRequired,
-  // };
+  static propTypes = {
+    name: PropTypes.string,
+    number: PropTypes.string,
+  };
   state = {
     // contacts: [],
     // filter: '',
