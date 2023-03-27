@@ -1,13 +1,14 @@
 const theme = {
   colors: {
-    notify: 'rgb(106, 17, 17)',
+    list: '#f4f1ad',
     container: 'rgb(247, 246, 237)',
-    section: 'rgb(244, 244, 215)',
-    good: '#b6f9c9',
-    bad: '#f9abab',
-    neutral: '#a9e1f9',
-    analitics: '#f4f1ad',
-    default: '#f6f6f6',
+    delete: '#f9abab',
+    add: '#b6f9c9',
+
+    // notify: 'rgb(106, 17, 17)',
+    // section: 'rgb(244, 244, 215)',
+    // neutral: '#a9e1f9',
+    // default: '#f6f6f6',
   },
   space: [0, 2, 4, 8, 16, 32, 64, 128, 252],
   fonts: {

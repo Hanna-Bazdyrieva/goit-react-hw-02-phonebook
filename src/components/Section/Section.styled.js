@@ -9,7 +9,8 @@ export const SectionStyled = styled.section`
 `;
 
 export const Title = styled.h2`
-  padding: ${p => p.theme.space[4]}px;
+  margin: ${p => p.theme.space[2]}px auto;
+  padding: ${p => p.theme.space[3]}px;
 
   font-size: ${p => p.theme.fontSizes.xl};
   font-weight: ${p => p.theme.fontWeights.bold};

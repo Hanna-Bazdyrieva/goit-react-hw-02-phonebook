@@ -1,28 +1,18 @@
 import { Component } from 'react';
 import PropTypes from 'prop-types';
-// import { Button } from './FeedbackOptions.styled';
 import { Box } from 'components/Box/Box';
-import { nanoid } from 'nanoid';
+import { v4 as uuidv4 } from 'uuid';
+import { InputLabel, AddBtn, Input } from './ContactForm.styled';
 
 class ContactForm extends Component {
-  static defaultProps = {
-    // contacts: [],
-    // filter: '',
-    name: '',
-    number: '',
-  };
   static propTypes = {
-    name: PropTypes.string,
-    number: PropTypes.string,
+    formSubmitHandler: PropTypes.func.isRequired,
   };
+
   state = {
-    // contacts: [],
-    // filter: '',
     name: '',
     number: '',
   };
-  nameInputId = nanoid();
-  numberInputId = nanoid();
 
   handleInputChange = evt => {
     const { name, value } = evt.currentTarget;
@@ -31,8 +21,7 @@ class ContactForm extends Component {
 
   handleSubmitForm = evt => {
     evt.preventDefault();
-    console.log('ContactForm -> state', this.state);
-    this.props.onSubmit(this.state);
+    this.props.formSubmitHandler({ ...this.state, id: uuidv4() });
     this.resetForm();
   };
 
@@ -41,12 +30,20 @@ class ContactForm extends Component {
   };
 
   render() {
-    // const buttons = this.props.options;
     return (
       <form onSubmit={this.handleSubmitForm}>
-        <Box display="flex" flexDirection="column" mx="auto" my={4} width={2}>
-          <label htmlFor={this.nameInputId}>Name</label>
-          <input
+        <Box
+          display="flex"
+          flexDirection="column"
+          mx="auto"
+          my={4}
+          width={2}
+          px={6}
+          py={4}
+          bg="list"
+        >
+          <InputLabel htmlFor={this.nameInputId}>Name</InputLabel>
+          <Input
             type="text"
             name="name"
             id={this.nameInputId}
@@ -58,37 +55,23 @@ class ContactForm extends Component {
             required
           />
 
-          <label htmlFor={this.numberInputId}>Number</label>
-          <input
-            type="text"
+          <InputLabel htmlFor={this.numberInputId}>Number</InputLabel>
+          <Input
+            type="tel"
             id={this.numberInputId}
             placeholder="Enter Number"
             name="number"
+            pattern="\+?\d{1,4}?[-.\s]?\(?\d{1,3}?\)?[-.\s]?\d{1,4}[-.\s]?\d{1,4}[-.\s]?\d{1,9}"
+            title="Phone number must be digits and can contain spaces, dashes, parentheses and can start with +"
+            required
             value={this.state.number}
             onChange={this.handleInputChange}
           />
-
-          <button type="submit">Add contact</button>
+          <AddBtn type="submit">Add contact</AddBtn>
         </Box>
       </form>
     );
   }
 }
-export default ContactForm;
 
-// {
-//   /* {buttons.map(btn => {
-//   return (
-//     // <Button
-//     //   key={btn}
-//     //   type="button"
-//     //   value={btn}
-//     //   onClick={event => {
-//     //     this.props.onLeaveFeedback(event);
-//     //   }}
-//     // >
-//     //   {btn}
-//     // </Button>
-//   );
-// })} */
-// }
+export default ContactForm;
